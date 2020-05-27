@@ -52,29 +52,36 @@ public class ButtonActions {
         return conn;
     }
 
-    public static void viewTable(Connection con, String dbName)
+    public  ResultSet viewTable()
             throws SQLException {
 
         Statement stmt = null;
+        ResultSet rs = null;
         String query = "select USERNAME " +
                 "PASSWORD " +
-                "from " + dbName + ".USERINFO"
-                "WHERE password = " getPassword() "AND username =" getUserName() ;
+                "from " + 1 + ".USERINFO" +
+                "WHERE password = " +getPassword()+ "AND username =" + getUserName() ;
        //not sure how attach these to buttons and also not sure what mysql returns if it finds something
         // I also don't know what my custom exception should look like
         try {
-            stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            stmt = getConnection().createStatement();
+            rs = stmt.executeQuery(query);
             while (rs.next()) {
                 String username = rs.getString("username");
                 String password = rs.getString("password");
 
                 System.out.println(username + "\t" + password);
+                return rs;
             }
-        } catch (SQLException e ) {
-            JDBCTutorialUtilities.printSQLException(e);
+        } catch (Exception e ) {
+            System.out.println(e);
+            return  null;
         } finally {
-            if (stmt != null) { stmt.close(); }
+            if (stmt != null) { stmt.close();
+
+            }
         }
+
+        return  rs;
     }
 }
