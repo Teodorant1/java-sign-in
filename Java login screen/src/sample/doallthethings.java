@@ -1,11 +1,24 @@
 package sample;
+import ButtonActions;
 
-public class doallthethings extends ButtonActions extends playvideo.java
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-{
 
-    public void EVERYTHING { getConnection
-    viewTable
-    if rs != NULL, playvideo}
+public class doallthethings extends ButtonActions
 
-}
+    {
+
+        public void EVERYTHING () throws SQLException {
+        ButtonActions buttonAction1 = new ButtonActions();
+        buttonAction1.getConnection();
+        ResultSet rs = buttonAction1.viewTable();
+
+        if (rs != NULL) {
+            playvideo
+        }
+
+    }
+
+
+    }
